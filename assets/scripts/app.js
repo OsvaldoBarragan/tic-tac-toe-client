@@ -13,4 +13,6 @@ $(() => {
   $('.authenticated').hide()
   $('#sign-up').on('submit', authentication.onSignUp)
   $('#sign-in').on('submit', authentication.onSignIn)
+  $('#password-change').on('submit', authentication.onChangePassword)
+  $('#sign-out').on('click', authentication.onSignOut)
 })
