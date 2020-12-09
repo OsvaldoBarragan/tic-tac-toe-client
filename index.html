@@ -12,6 +12,44 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Log in to play the Tic Tac Toe!</h1>
+      <p id="message">This is a test</p>
+      <div class="unauthenticated">
+        <form id="sign-up">
+          <input
+            placeholder="Enter email"
+            type="text"
+            name="credentials[email]"
+          />
+          <input
+            placeholder="Enter a password"
+            type="password"
+            name="credentials[password]"
+          />
+          <input
+            placeholder="Re-enter your password"
+            type="password"
+            name="credentials[password_confirmation]"
+          />
+          <button type="submit">Create Account</button>
+        </form>
+        <form id="sign-in">
+          <input
+            placeholder="Enter your email"
+            type="text"
+            name="credentials[email]"
+          />
+          <input
+            placeholder="Enter your password"
+            type="password"
+            name="credentials[password]"
+          />
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+
+      <div class="authenticated">
+      </div>
+
     </body>
 </html>
