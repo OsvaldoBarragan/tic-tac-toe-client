@@ -19,6 +19,9 @@ const signInSuccess = function (response) {
 
   $('.unauthenticated').hide()
   $('.authenticated').show()
+  $('#gameMessage').hide()
+  $('#gameBoard').hide()
+  $('#currentPlayerDisplay').hide()
 }
 
 const signInFailure = function (error) {
@@ -52,6 +55,22 @@ const signOutFailure = function (error) {
   console.log('Error: ' + error.responseJSON.message)
 }
 
+const newGameSuccess = function (response) {
+  $('#message').text('A new game has started.')
+  console.log(response)
+
+  store.user = response.user
+
+  $('#gameBoard').show()
+  $('#gameMessage').show()
+  $('#currentPlayerDisplay').show()
+}
+
+const newGameFailure = function (error) {
+  $('#message').text('New game could not be started.')
+  console.log('There is an error: ' + error.responseJSON.message)
+}
+
 module.exports = {
   signUpSuccess: signUpSuccess,
   signUpFailure: signUpFailure,
@@ -60,5 +79,7 @@ module.exports = {
   changePasswordSuccess: changePasswordSuccess,
   changePasswordFailure: changePasswordFailure,
   signOutSuccess: signOutSuccess,
-  signOutFailure: signOutFailure
+  signOutFailure: signOutFailure,
+  newGameSuccess: newGameSuccess,
+  newGameFailure: newGameFailure
 }

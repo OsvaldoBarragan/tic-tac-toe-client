@@ -1,1 +1,17 @@
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: grey;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+}
