@@ -22,6 +22,7 @@ const signInSuccess = function (response) {
   $('#gameMessage').hide()
   $('#gameBoard').hide()
   $('#currentPlayerDisplay').hide()
+  $('#titleName').html('Tic Tac Toe')
 }
 
 const signInFailure = function (error) {
