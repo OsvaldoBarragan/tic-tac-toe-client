@@ -58,7 +58,7 @@ const signOutFailure = function (error) {
 
 const newGameSuccess = function (response) {
   $('#message').text('A new game has started.')
-  console.log(response)
+  console.log('It works: ' + response)
 
   store.user = response.user
 
@@ -72,6 +72,16 @@ const newGameFailure = function (error) {
   console.log('There is an error: ' + error.responseJSON.message)
 }
 
+const getGamesSuccess = function (response) {
+  $('#message').text('Games have beens shown.')
+  console.log('Games have been given: ' + response)
+}
+
+const getGamesFailure = function (error) {
+  $('#message').text('Cannot get games.')
+  console.log('There is an error: ' + error.responseJSON.message)
+}
+
 module.exports = {
   signUpSuccess: signUpSuccess,
   signUpFailure: signUpFailure,
@@ -82,5 +92,7 @@ module.exports = {
   signOutSuccess: signOutSuccess,
   signOutFailure: signOutFailure,
   newGameSuccess: newGameSuccess,
-  newGameFailure: newGameFailure
+  newGameFailure: newGameFailure,
+  getGamesSuccess: getGamesSuccess,
+  getGamesFailure: getGamesFailure
 }

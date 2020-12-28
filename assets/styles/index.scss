@@ -4,27 +4,28 @@ body {
   background-color: grey;
 }
 
-// #formCarrier {
-//   background-color: green;
-//   height: 650px;
-//   width: 650px;
-//   margin-left: 26.9%;
-//   margin-top: -50px;
-//   position: absolute;
-// }
-//
-// h1 {
-//   text-align: center;
-//   color: black;
-//   position: relative;
-// }
-//
-// .unauthenticated {
-//   text-align: center;
-//   font-size: 50px;
-//   margin-top: 150px;
-//   position: relative;
-// }
+h1 {
+  text-align: center;
+  color: black;
+  position: relative;
+  font-size: 40px;
+  margin-top: 100px;
+}
+
+.unauthenticated {
+  text-align: center;
+  font-size: 50px;
+  position: relative;
+}
+
+.authenticated {
+  text-align: center;
+  position: relative;
+}
+
+#message {
+  text-align: center;
+}
 
 table {
   margin-left: auto;

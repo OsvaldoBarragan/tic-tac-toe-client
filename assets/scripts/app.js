@@ -14,7 +14,63 @@ const player2 = 'O'
 let player1Wins = 0
 let player2Wins = 0
 // let scoreBoard = $('#scoreBoard').text(player1Wins + ' : ' + player2Wins)
+const switchPlayer = function () {
+  if (currentPlayer === player1) {
+    currentPlayer = player2
+    playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
+  } else {
+    currentPlayer = player1
+    playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
+  }
+}
 
+const addWins = function () {
+  if (currentPlayer === player1) {
+    player1Wins += 1
+    console.log(player1Wins)
+    return player1Wins
+  } else if (currentPlayer === player2) {
+    player2Wins += 1
+    console.log(player2Wins)
+    return player2Wins
+  }
+}
+
+const checkForWin = function () {
+  if (gameSpaces[0] === currentPlayer && gameSpaces[1] === currentPlayer &&
+     gameSpaces[2] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[0] === currentPlayer && gameSpaces[3] === currentPlayer &&
+    gameSpaces[6] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[0] === currentPlayer && gameSpaces[4] === currentPlayer &&
+    gameSpaces[8] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[1] === currentPlayer && gameSpaces[4] === currentPlayer &&
+    gameSpaces[7] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[2] === currentPlayer && gameSpaces[5] === currentPlayer &&
+    gameSpaces[8] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[2] === currentPlayer && gameSpaces[4] === currentPlayer &&
+    gameSpaces[6] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[3] === currentPlayer && gameSpaces[4] === currentPlayer &&
+    gameSpaces[5] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  } else if (gameSpaces[6] === currentPlayer && gameSpaces[7] === currentPlayer &&
+    gameSpaces[8] === currentPlayer) {
+    console.log('Win')
+    addWins()
+  }
+}
 // current player
 let currentPlayer = player1
 
@@ -23,6 +79,17 @@ const playerDisplay = document.querySelector('#currentPlayerDisplay')
 
 // transforms all nine game board spaces into an array
 const gameSpaces = ['', '', '', '', '', '', '', '', '']
+
+// // Displays who won on the screen
+// const winningStatement = function () {
+//   playerDisplay.innerHTML = (currentPlayer + ' wins!')
+// }
+
+// const checkForWin = function () {
+//   if (gameSpaces[0], gameSpaces[1], gameSpaces[2] === currentPlayer) {
+//     winningStatement()
+//   }
+// }
 
 // gives the eight winning combinations
 // const winningCombos = [
@@ -44,6 +111,7 @@ $(() => {
   $('#password-change').on('submit', authentication.onChangePassword)
   $('#sign-out').on('click', authentication.onSignOut)
   $('#new-game').on('click', authentication.onNewGame)
+  $('#get-games').on('click', authentication.onGetGames)
 
   // if the first top space is clicked, the function will run
   $('#0').one('click', function (e) {
@@ -54,49 +122,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[0] = currentPlayer
     console.log(gameSpaces)
-    if (gameSpaces[0] === currentPlayer) {
-      if (gameSpaces[1] === currentPlayer && gameSpaces[2] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[3] === currentPlayer && gameSpaces[6] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[4] === currentPlayer && gameSpaces[8] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    checkForWin()
+
+    switchPlayer()
   })
 
-  // if the second top space is clicked, the function will run
   $('#1').one('click', function (e) {
     $('#1').text(currentPlayer)
     console.log($('#1').text())
@@ -105,41 +135,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[1] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[1] === currentPlayer) {
-      if (gameSpaces[0] === currentPlayer && gameSpaces[2] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[4] === currentPlayer && gameSpaces[7] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the last top space is clicked, the function will run
   $('#2').one('click', function (e) {
     $('#2').text(currentPlayer)
     console.log($('#2').text())
@@ -148,51 +148,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[2] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[2] === currentPlayer) {
-      if (gameSpaces[0] === currentPlayer && gameSpaces[1] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[5] === currentPlayer && gameSpaces[8] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[4] === currentPlayer && gameSpaces[6] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the first middle space is clicked, the function will run
   $('#3').one('click', function (e) {
     $('#3').text(currentPlayer)
     console.log($('#3').text())
@@ -201,41 +161,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[3] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[3] === currentPlayer) {
-      if (gameSpaces[0] === currentPlayer && gameSpaces[6] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[4] === currentPlayer && gameSpaces[5] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the second middle space is clicked, the function will run
   $('#4').one('click', function (e) {
     $('#4').text(currentPlayer)
     console.log($('#4').text())
@@ -244,61 +174,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[4] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[4] === currentPlayer) {
-      if (gameSpaces[0] === currentPlayer && gameSpaces[8] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[1] === currentPlayer && gameSpaces[7] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[2] === currentPlayer && gameSpaces[6] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[3] === currentPlayer && gameSpaces[5] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the last middle space is clicked, the function will run
   $('#5').one('click', function (e) {
     $('#5').text(currentPlayer)
     console.log($('#5').text())
@@ -307,41 +187,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[5] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[5] === currentPlayer) {
-      if (gameSpaces[2] === currentPlayer && gameSpaces[8] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[3] === currentPlayer && gameSpaces[4] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the first bottom space is clicked, the function will run
   $('#6').one('click', function (e) {
     $('#6').text(currentPlayer)
     console.log($('#6').text())
@@ -350,51 +200,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[6] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[6] === currentPlayer) {
-      if (gameSpaces[0] === currentPlayer && gameSpaces[3] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[2] === currentPlayer && gameSpaces[4] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[7] === currentPlayer && gameSpaces[8] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the second bottom space is clicked, the function will run
   $('#7').one('click', function (e) {
     $('#7').text(currentPlayer)
     console.log($('#7').text())
@@ -403,41 +213,11 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[7] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[7] === currentPlayer) {
-      if (gameSpaces[1] === currentPlayer && gameSpaces[4] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[6] === currentPlayer && gameSpaces[8] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 
-  // if the last bottom space is clicked, the function will run
   $('#8').one('click', function (e) {
     $('#8').text(currentPlayer)
     console.log($('#8').text())
@@ -446,47 +226,8 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[8] = currentPlayer
     console.log(gameSpaces)
+    checkForWin()
 
-    if (gameSpaces[8] === currentPlayer) {
-      if (gameSpaces[0] === currentPlayer && gameSpaces[4] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[2] === currentPlayer && gameSpaces[5] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      } else if (gameSpaces[6] === currentPlayer && gameSpaces[7] === currentPlayer) {
-        console.log(currentPlayer + ' wins!')
-        playerDisplay.innerHTML = (currentPlayer + ' wins!')
-        if (currentPlayer === player1) {
-          player1Wins += 1
-          return player1Wins
-        } else if (currentPlayer === player2) {
-          player2Wins += 1
-          return player2Wins
-        }
-      }
-    }
-
-    if (currentPlayer === player1) {
-      currentPlayer = player2
-      playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-    } else {
-      currentPlayer = player1
-      playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
-    }
+    switchPlayer()
   })
 })
