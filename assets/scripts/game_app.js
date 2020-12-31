@@ -17,6 +17,8 @@ const player1 = 'X'
 const player2 = 'O'
 let player1Wins = 0
 let player2Wins = 0
+let gameTies = 0
+let moves = 0
 // let scoreBoard = $('#scoreBoard').text(player1Wins + ' : ' + player2Wins)
 const switchPlayer = function () {
   if (currentPlayer === player1) {
@@ -33,47 +35,43 @@ const addWins = function () {
     player1Wins += 1
     console.log(player1Wins)
     return player1Wins
-  } else if (currentPlayer === player2) {
-    player2Wins += 1
-    console.log(player2Wins)
-    return player2Wins
   }
+  player2Wins += 1
+  console.log(player2Wins)
+  return player2Wins
 }
 
 const checkForWin = function () {
   if (gameSpaces[0] === currentPlayer && gameSpaces[1] === currentPlayer &&
      gameSpaces[2] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[0] === currentPlayer && gameSpaces[3] === currentPlayer &&
     gameSpaces[6] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[0] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[1] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[7] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[2] === currentPlayer && gameSpaces[5] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[2] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[6] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[3] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[5] === currentPlayer) {
     console.log('Win')
-    addWins()
   } else if (gameSpaces[6] === currentPlayer && gameSpaces[7] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
     console.log('Win')
-    addWins()
   }
+}
+
+const addTies = function () {
+  gameTies += 1
+  return gameTies
 }
 
 // current player
@@ -93,7 +91,13 @@ $('#0').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[0] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin()) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -106,7 +110,13 @@ $('#1').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[1] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -119,7 +129,13 @@ $('#2').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[2] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -132,7 +148,13 @@ $('#3').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[3] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -145,7 +167,13 @@ $('#4').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[4] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -158,7 +186,13 @@ $('#5').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[5] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -171,7 +205,13 @@ $('#6').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[6] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -184,7 +224,13 @@ $('#7').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[7] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })
@@ -197,7 +243,13 @@ $('#8').one('click', function (e) {
   playerDisplay.innerHTML = currentPlayer
   gameSpaces[8] = currentPlayer
   console.log(gameSpaces)
-  checkForWin()
+  moves += 1
+
+  if (checkForWin() === true) {
+    addWins()
+  } else if (moves === 9) {
+    addTies()
+  }
 
   switchPlayer()
 })

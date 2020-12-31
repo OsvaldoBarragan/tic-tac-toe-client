@@ -13,6 +13,8 @@ const player1 = 'X'
 const player2 = 'O'
 let player1Wins = 0
 let player2Wins = 0
+let gameTies = 0
+let moves = 0
 // let scoreBoard = $('#scoreBoard').text(player1Wins + ' : ' + player2Wins)
 const switchPlayer = function () {
   if (currentPlayer === player1) {
@@ -40,36 +42,43 @@ const checkForWin = function () {
   if (gameSpaces[0] === currentPlayer && gameSpaces[1] === currentPlayer &&
      gameSpaces[2] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[0] === currentPlayer && gameSpaces[3] === currentPlayer &&
     gameSpaces[6] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[0] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[1] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[7] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[2] === currentPlayer && gameSpaces[5] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[2] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[6] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[3] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[5] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
   } else if (gameSpaces[6] === currentPlayer && gameSpaces[7] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
     console.log('Win')
-    addWins()
+    return true
+  } else {
+    return false
   }
+}
+
+const addTies = function () {
+  gameTies += 1
+  return gameTies
 }
 // current player
 let currentPlayer = player1
@@ -122,11 +131,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[0] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the middle top space is clicked, the function will run
   $('#1').one('click', function (e) {
     $('#1').text(currentPlayer)
     console.log($('#1').text())
@@ -135,11 +152,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[1] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the third top space is clicked, the function will run
   $('#2').one('click', function (e) {
     $('#2').text(currentPlayer)
     console.log($('#2').text())
@@ -148,11 +173,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[2] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the first middle space is clicked, the function will run
   $('#3').one('click', function (e) {
     $('#3').text(currentPlayer)
     console.log($('#3').text())
@@ -161,11 +194,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[3] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the second middle space is clicked, the function will run
   $('#4').one('click', function (e) {
     $('#4').text(currentPlayer)
     console.log($('#4').text())
@@ -174,11 +215,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[4] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the third middle space is clicked, the function will run
   $('#5').one('click', function (e) {
     $('#5').text(currentPlayer)
     console.log($('#5').text())
@@ -187,11 +236,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[5] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the first bottom space is clicked, the function will run
   $('#6').one('click', function (e) {
     $('#6').text(currentPlayer)
     console.log($('#6').text())
@@ -200,11 +257,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[6] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the middle bottom space is clicked, the function will run
   $('#7').one('click', function (e) {
     $('#7').text(currentPlayer)
     console.log($('#7').text())
@@ -213,11 +278,19 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[7] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
-
+  // if the last bottom space is clicked, the function will run
   $('#8').one('click', function (e) {
     $('#8').text(currentPlayer)
     console.log($('#8').text())
@@ -226,7 +299,15 @@ $(() => {
     playerDisplay.innerHTML = currentPlayer
     gameSpaces[8] = currentPlayer
     console.log(gameSpaces)
-    checkForWin()
+    moves += 1
+
+    if (checkForWin()) {
+      addWins()
+      console.log('YOU HAVE WON')
+    } else if (moves === 9) {
+      addTies()
+      console.log('It is a tie')
+    }
 
     switchPlayer()
   })
