@@ -15,17 +15,21 @@ let player1Wins = 0
 let player2Wins = 0
 let gameTies = 0
 let moves = 0
+let isGameOver = false
 // let scoreBoard = $('#scoreBoard').text(player1Wins + ' : ' + player2Wins)
+
 const switchPlayer = function () {
   if (currentPlayer === player1) {
     currentPlayer = player2
     playerDisplay.innerHTML = ('Current Player: Player 2 (O)')
-  } else {
+  } else if (currentPlayer === player2) {
     currentPlayer = player1
     playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
   }
 }
-
+// know the end of the game
+// by knowing if it's a win or tie
+// to let the users know if they tied or someone won
 const addWins = function () {
   if (currentPlayer === player1) {
     player1Wins += 1
@@ -41,35 +45,27 @@ const addWins = function () {
 const checkForWin = function () {
   if (gameSpaces[0] === currentPlayer && gameSpaces[1] === currentPlayer &&
      gameSpaces[2] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[0] === currentPlayer && gameSpaces[3] === currentPlayer &&
     gameSpaces[6] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[0] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[1] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[7] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[2] === currentPlayer && gameSpaces[5] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[2] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[6] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[3] === currentPlayer && gameSpaces[4] === currentPlayer &&
     gameSpaces[5] === currentPlayer) {
-    console.log('Win')
     return true
   } else if (gameSpaces[6] === currentPlayer && gameSpaces[7] === currentPlayer &&
     gameSpaces[8] === currentPlayer) {
-    console.log('Win')
     return true
   } else {
     return false
@@ -80,11 +76,25 @@ const addTies = function () {
   gameTies += 1
   return gameTies
 }
+
+const addResult = function () {
+  if (checkForWin()) {
+    addWins()
+    playerDisplay.innerHTML = (currentPlayer + ' has won!')
+    console.log('Someone won')
+    isGameOver = true
+  } else if (moves === 9) {
+    addTies()
+    playerDisplay.innerHTML = ('It is a tie')
+    console.log('It is a tie')
+    isGameOver = true
+  }
+}
 // current player
 let currentPlayer = player1
 
 // displays the current player
-const playerDisplay = document.querySelector('#currentPlayerDisplay')
+const playerDisplay = document.getElementById('currentPlayerDisplay')
 
 // transforms all nine game board spaces into an array
 const gameSpaces = ['', '', '', '', '', '', '', '', '']
@@ -133,15 +143,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the middle top space is clicked, the function will run
   $('#1').one('click', function (e) {
@@ -154,15 +160,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the third top space is clicked, the function will run
   $('#2').one('click', function (e) {
@@ -175,15 +177,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the first middle space is clicked, the function will run
   $('#3').one('click', function (e) {
@@ -196,15 +194,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the second middle space is clicked, the function will run
   $('#4').one('click', function (e) {
@@ -217,15 +211,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the third middle space is clicked, the function will run
   $('#5').one('click', function (e) {
@@ -238,15 +228,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the first bottom space is clicked, the function will run
   $('#6').one('click', function (e) {
@@ -259,15 +245,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the middle bottom space is clicked, the function will run
   $('#7').one('click', function (e) {
@@ -280,15 +262,11 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
   // if the last bottom space is clicked, the function will run
   $('#8').one('click', function (e) {
@@ -301,14 +279,10 @@ $(() => {
     console.log(gameSpaces)
     moves += 1
 
-    if (checkForWin()) {
-      addWins()
-      console.log('YOU HAVE WON')
-    } else if (moves === 9) {
-      addTies()
-      console.log('It is a tie')
-    }
+    addResult()
 
-    switchPlayer()
+    if (!isGameOver) {
+      switchPlayer()
+    }
   })
 })
