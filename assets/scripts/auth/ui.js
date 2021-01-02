@@ -12,10 +12,10 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (response) {
   $('#message').text('You have signed in!')
-  console.log(store)
+  console.log(response)
 
   store.user = response.user
-  console.log(store.user.email)
+  console.log(store.user)
 
   $('.unauthenticated').hide()
   $('.authenticated').show()
@@ -58,9 +58,8 @@ const signOutFailure = function (error) {
 
 const newGameSuccess = function (response) {
   $('#message').text('A new game has started.')
-  console.log('It works: ' + response)
 
-  store.user = response.user
+  store.game = response.game
 
   $('#gameBoard').show()
   $('#gameMessage').show()

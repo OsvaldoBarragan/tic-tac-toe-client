@@ -27,6 +27,7 @@ const switchPlayer = function () {
     playerDisplay.innerHTML = ('Current Player: Player 1 (X)')
   }
 }
+
 // know the end of the game
 // by knowing if it's a win or tie
 // to let the users know if they tied or someone won
@@ -98,6 +99,12 @@ const playerDisplay = document.getElementById('currentPlayerDisplay')
 
 // transforms all nine game board spaces into an array
 const gameSpaces = ['', '', '', '', '', '', '', '', '']
+
+// const resetGame = function () {
+//   gameSpaces = ['', '', '', '', '', '', '', '', '']
+//   moves = 0
+//   isGameOver = false
+// }
 
 // // Displays who won on the screen
 // const winningStatement = function () {
