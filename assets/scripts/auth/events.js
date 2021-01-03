@@ -24,7 +24,6 @@ const onSignIn = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-
   const form = event.target
   const data = getFormFields(form)
 
@@ -35,7 +34,6 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-
   const form = event.target
   const data = getFormFields(form)
 

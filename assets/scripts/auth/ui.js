@@ -56,10 +56,26 @@ const signOutFailure = function (error) {
   console.log('Error: ' + error.responseJSON.message)
 }
 
+const resetGame = function () {
+  $('.space').text('')
+  store.game.cells[0] = ''
+  store.game.cells[1] = ''
+  store.game.cells[2] = ''
+  store.game.cells[3] = ''
+  store.game.cells[4] = ''
+  store.game.cells[5] = ''
+  store.game.cells[6] = ''
+  store.game.cells[7] = ''
+  store.game.cells[8] = ''
+  store.game.over = false
+}
+
 const newGameSuccess = function (response) {
   $('#message').text('A new game has started.')
 
   store.game = response.game
+  console.log(store.game)
+  resetGame()
 
   $('#gameBoard').show()
   $('#gameMessage').show()
