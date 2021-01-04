@@ -56,7 +56,6 @@ const onUpdateGame = function (event, indexNum, valueIcon) {
 
   const id = store.game._id
   const isOver = store.game.over
-  console.log('Make sense of isOver: ' + isOver)
 
   api.updateGame(id, indexNum, valueIcon, isOver)
     .then(ui.updateGameSuccess)

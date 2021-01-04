@@ -34,17 +34,14 @@ const switchPlayer = function () {
 const addWins = function () {
   if (currentPlayer === player1) {
     player1Wins += 1
-    console.log('Player1 wins: ' + player1Wins)
     return player1Wins
   } else if (currentPlayer === player2) {
     player2Wins += 1
-    console.log('Player2 wins: ' + player2Wins)
     return player2Wins
   }
 }
 
 const checkForWin = function () {
-  console.log('cheese louis: ' + store.game.cells)
   if (store.game.cells[0] === currentPlayer && store.game.cells[1] === currentPlayer &&
      store.game.cells[2] === currentPlayer) {
     return true
@@ -76,7 +73,6 @@ const checkForWin = function () {
 
 const addTies = function () {
   gameTies += 1
-  console.log('Number of ties: ' + gameTies)
   return gameTies
 }
 
@@ -84,13 +80,11 @@ const addResult = function () {
   if (checkForWin()) {
     addWins()
     playerDisplay.innerHTML = (currentPlayer + ' has won!')
-    console.log('Someone won')
     moves = 0
     store.game.over = true
   } else if (moves === 9) {
     addTies()
     playerDisplay.innerHTML = ('It is a tie')
-    console.log('It is a tie')
     moves = 0
     store.game.over = true
   }
@@ -98,9 +92,9 @@ const addResult = function () {
 
 const changeCellBackground = function (id) {
   if (currentPlayer === player1) {
-    $(id).css({ 'background-color': '#7c9473' })
+    $(id).css({ 'background-color': '#0F6A94' })
   } else {
-    $(id).css({ 'background-color': '#cfdac8' })
+    $(id).css({ 'background-color': '#E01631' })
   }
 }
 // current player
@@ -108,31 +102,6 @@ let currentPlayer = player1
 
 // displays the current player
 const playerDisplay = document.getElementById('currentPlayerDisplay')
-
-// transforms all nine game board spaces into an array
-
-// // Displays who won on the screen
-// const winningStatement = function () {
-//   playerDisplay.innerHTML = (currentPlayer + ' wins!')
-// }
-
-// const checkForWin = function () {
-//   if (gameSpaces[0], gameSpaces[1], gameSpaces[2] === currentPlayer) {
-//     winningStatement()
-//   }
-// }
-
-// gives the eight winning combinations
-// const winningCombos = [
-//   [gameSpaces[0], gameSpaces[1], gameSpaces[2]],
-//   [gameSpaces[0], gameSpaces[3], gameSpaces[6]],
-//   [gameSpaces[0], gameSpaces[4], gameSpaces[8]],
-//   [gameSpaces[1], gameSpaces[4], gameSpaces[7]],
-//   [gameSpaces[2], gameSpaces[5], gameSpaces[8]],
-//   [gameSpaces[2], gameSpaces[4], gameSpaces[6]],
-//   [gameSpaces[3], gameSpaces[4], gameSpaces[5]],
-//   [gameSpaces[6], gameSpaces[7], gameSpaces[8]]
-// ]
 
 $(() => {
   // your JS code goes here
@@ -148,10 +117,7 @@ $(() => {
   $('#0').on('click', function (e) {
     if (store.game.cells[0] === '' && !store.game.over) {
       $('#0').text(currentPlayer)
-      console.log($('#0').text())
       changeCellBackground('#0')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[0] = currentPlayer
       moves += 1
@@ -168,10 +134,7 @@ $(() => {
   $('#1').on('click', function (e) {
     if (store.game.cells[1] === '' && !store.game.over) {
       $('#1').text(currentPlayer)
-      console.log($('#1').text())
       changeCellBackground('#1')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[1] = currentPlayer
 
@@ -189,10 +152,7 @@ $(() => {
   $('#2').on('click', function (e) {
     if (store.game.cells[2] === '' && !store.game.over) {
       $('#2').text(currentPlayer)
-      console.log($('#2').text())
       changeCellBackground('#2')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[2] = currentPlayer
 
@@ -210,10 +170,7 @@ $(() => {
   $('#3').on('click', function (e) {
     if (store.game.cells[3] === '' && !store.game.over) {
       $('#3').text(currentPlayer)
-      console.log($('#3').text())
       changeCellBackground('#3')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[3] = currentPlayer
       moves += 1
@@ -230,10 +187,7 @@ $(() => {
   $('#4').on('click', function (e) {
     if (store.game.cells[4] === '' && !store.game.over) {
       $('#4').text(currentPlayer)
-      console.log($('#4').text())
       changeCellBackground('#4')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[4] = currentPlayer
       moves += 1
@@ -250,10 +204,7 @@ $(() => {
   $('#5').on('click', function (e) {
     if (store.game.cells[5] === '' && !store.game.over) {
       $('#5').text(currentPlayer)
-      console.log($('#5').text())
       changeCellBackground('#5')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[5] = currentPlayer
       moves += 1
@@ -270,10 +221,7 @@ $(() => {
   $('#6').on('click', function (e) {
     if (store.game.cells[6] === '' && !store.game.over) {
       $('#6').text(currentPlayer)
-      console.log($('#6').text())
       changeCellBackground('#6')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[6] = currentPlayer
       moves += 1
@@ -290,10 +238,7 @@ $(() => {
   $('#7').on('click', function (e) {
     if (store.game.cells[7] === '' && !store.game.over) {
       $('#7').text(currentPlayer)
-      console.log($('#7').text())
       changeCellBackground('#7')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[7] = currentPlayer
       moves += 1
@@ -310,10 +255,7 @@ $(() => {
   $('#8').on('click', function (e) {
     if (store.game.cells[8] === '' && !store.game.over) {
       $('#8').text(currentPlayer)
-      console.log($('#8').text())
       changeCellBackground('#8')
-      // const index = gameSpaces.indexOf(e.target)
-      // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[8] = currentPlayer
       moves += 1

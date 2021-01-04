@@ -1,7 +1,7 @@
 // @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-color: #e8eae6;
+  background-color: #aacfdd;
 }
 
 h1 {
@@ -21,6 +21,11 @@ h1 {
 .authenticated {
   text-align: center;
   position: relative;
+}
+
+.space {
+  color: white;
+  font-size: 72px;
 }
 
 #message {
