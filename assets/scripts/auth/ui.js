@@ -58,6 +58,7 @@ const signOutFailure = function (error) {
 
 const resetGame = function () {
   $('.space').text('')
+  $('.space').css({ 'background-color': '#e8eae6' })
   store.game.cells[0] = ''
   store.game.cells[1] = ''
   store.game.cells[2] = ''

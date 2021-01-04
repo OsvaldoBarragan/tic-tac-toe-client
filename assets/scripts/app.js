@@ -96,6 +96,13 @@ const addResult = function () {
   }
 }
 
+const changeCellBackground = function (id) {
+  if (currentPlayer === player1) {
+    $(id).css({ 'background-color': '#7c9473' })
+  } else {
+    $(id).css({ 'background-color': '#cfdac8' })
+  }
+}
 // current player
 let currentPlayer = player1
 
@@ -142,6 +149,7 @@ $(() => {
     if (store.game.cells[0] === '' && !store.game.over) {
       $('#0').text(currentPlayer)
       console.log($('#0').text())
+      changeCellBackground('#0')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -161,6 +169,7 @@ $(() => {
     if (store.game.cells[1] === '' && !store.game.over) {
       $('#1').text(currentPlayer)
       console.log($('#1').text())
+      changeCellBackground('#1')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -181,6 +190,7 @@ $(() => {
     if (store.game.cells[2] === '' && !store.game.over) {
       $('#2').text(currentPlayer)
       console.log($('#2').text())
+      changeCellBackground('#2')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -201,6 +211,7 @@ $(() => {
     if (store.game.cells[3] === '' && !store.game.over) {
       $('#3').text(currentPlayer)
       console.log($('#3').text())
+      changeCellBackground('#3')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -220,6 +231,7 @@ $(() => {
     if (store.game.cells[4] === '' && !store.game.over) {
       $('#4').text(currentPlayer)
       console.log($('#4').text())
+      changeCellBackground('#4')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -239,6 +251,7 @@ $(() => {
     if (store.game.cells[5] === '' && !store.game.over) {
       $('#5').text(currentPlayer)
       console.log($('#5').text())
+      changeCellBackground('#5')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -258,6 +271,7 @@ $(() => {
     if (store.game.cells[6] === '' && !store.game.over) {
       $('#6').text(currentPlayer)
       console.log($('#6').text())
+      changeCellBackground('#6')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -277,6 +291,7 @@ $(() => {
     if (store.game.cells[7] === '' && !store.game.over) {
       $('#7').text(currentPlayer)
       console.log($('#7').text())
+      changeCellBackground('#7')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
@@ -296,6 +311,7 @@ $(() => {
     if (store.game.cells[8] === '' && !store.game.over) {
       $('#8').text(currentPlayer)
       console.log($('#8').text())
+      changeCellBackground('#8')
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
