@@ -44,6 +44,7 @@ const addWins = function () {
 }
 
 const checkForWin = function () {
+  console.log('cheese louis: ' + store.game.cells)
   if (store.game.cells[0] === currentPlayer && store.game.cells[1] === currentPlayer &&
      store.game.cells[2] === currentPlayer) {
     return true
@@ -75,6 +76,7 @@ const checkForWin = function () {
 
 const addTies = function () {
   gameTies += 1
+  console.log('Number of ties: ' + gameTies)
   return gameTies
 }
 
@@ -93,6 +95,7 @@ const addResult = function () {
     store.game.over = true
   }
 }
+
 // current player
 let currentPlayer = player1
 
@@ -136,17 +139,17 @@ $(() => {
 
   // if the first top space is clicked, the function will run
   $('#0').on('click', function (e) {
-    if (store.game.cells[0] === '') {
+    if (store.game.cells[0] === '' && !store.game.over) {
       $('#0').text(currentPlayer)
       console.log($('#0').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[0] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 0, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -155,17 +158,18 @@ $(() => {
   })
   // if the middle top space is clicked, the function will run
   $('#1').on('click', function (e) {
-    if (store.game.cells[1] === '') {
+    if (store.game.cells[1] === '' && !store.game.over) {
       $('#1').text(currentPlayer)
       console.log($('#1').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[1] = currentPlayer
-      console.log(store.game.cells)
+
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 1, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -174,17 +178,18 @@ $(() => {
   })
   // if the third top space is clicked, the function will run
   $('#2').on('click', function (e) {
-    if (store.game.cells[2] === '') {
+    if (store.game.cells[2] === '' && !store.game.over) {
       $('#2').text(currentPlayer)
       console.log($('#2').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[2] = currentPlayer
-      console.log(store.game.cells)
+
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 2, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -193,17 +198,17 @@ $(() => {
   })
   // if the first middle space is clicked, the function will run
   $('#3').on('click', function (e) {
-    if (store.game.cells[3] === '') {
+    if (store.game.cells[3] === '' && !store.game.over) {
       $('#3').text(currentPlayer)
       console.log($('#3').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[3] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 3, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -212,17 +217,17 @@ $(() => {
   })
   // if the second middle space is clicked, the function will run
   $('#4').on('click', function (e) {
-    if (store.game.cells[4] === '') {
+    if (store.game.cells[4] === '' && !store.game.over) {
       $('#4').text(currentPlayer)
       console.log($('#4').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[4] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 4, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -231,17 +236,17 @@ $(() => {
   })
   // if the third middle space is clicked, the function will run
   $('#5').on('click', function (e) {
-    if (store.game.cells[5] === '') {
+    if (store.game.cells[5] === '' && !store.game.over) {
       $('#5').text(currentPlayer)
       console.log($('#5').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[5] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 5, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -250,17 +255,17 @@ $(() => {
   })
   // if the first bottom space is clicked, the function will run
   $('#6').on('click', function (e) {
-    if (store.game.cells[6] === '') {
+    if (store.game.cells[6] === '' && !store.game.over) {
       $('#6').text(currentPlayer)
       console.log($('#6').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[6] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 6, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -269,17 +274,17 @@ $(() => {
   })
   // if the middle bottom space is clicked, the function will run
   $('#7').on('click', function (e) {
-    if (store.game.cells[7] === '') {
+    if (store.game.cells[7] === '' && !store.game.over) {
       $('#7').text(currentPlayer)
       console.log($('#7').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[7] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 7, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()
@@ -288,17 +293,17 @@ $(() => {
   })
   // if the last bottom space is clicked, the function will run
   $('#8').on('click', function (e) {
-    if (store.game.cells[8] === '') {
+    if (store.game.cells[8] === '' && !store.game.over) {
       $('#8').text(currentPlayer)
       console.log($('#8').text())
       // const index = gameSpaces.indexOf(e.target)
       // console.log(index)
       playerDisplay.innerHTML = currentPlayer
       store.game.cells[8] = currentPlayer
-      console.log(store.game.cells)
       moves += 1
 
       addResult()
+      authentication.onUpdateGame(e, 8, currentPlayer)
 
       if (!store.game.over) {
         switchPlayer()

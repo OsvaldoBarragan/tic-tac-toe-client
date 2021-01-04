@@ -1,6 +1,7 @@
 const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('./../../../lib/get-form-fields')
+const store = require('./../store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -44,20 +45,28 @@ const onSignOut = function (event) {
 
 const onNewGame = function (event) {
   event.preventDefault()
-  const form = event.target
-  const data = getFormFields(form)
 
-  api.newGame(data)
+  api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
 
+const onUpdateGame = function (event, indexNum, valueIcon) {
+  event.preventDefault()
+
+  const id = store.game._id
+  const isOver = store.game.over
+  console.log('Make sense of isOver: ' + isOver)
+
+  api.updateGame(id, indexNum, valueIcon, isOver)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
+}
+
 const onGetGames = function (event) {
   event.preventDefault()
-  const form = event.target
-  const data = getFormFields(form)
 
-  api.getGames(data)
+  api.getGames()
     .then(ui.getGamesSuccess)
     .catch(ui.getGamesFailure)
 }
@@ -68,5 +77,6 @@ module.exports = {
   onChangePassword: onChangePassword,
   onSignOut: onSignOut,
   onNewGame: onNewGame,
+  onUpdateGame: onUpdateGame,
   onGetGames: onGetGames
 }

@@ -68,6 +68,7 @@ const resetGame = function () {
   store.game.cells[7] = ''
   store.game.cells[8] = ''
   store.game.over = false
+  $('#currentPlayerDisplay').text('Current Player: Player 1 (X)')
 }
 
 const newGameSuccess = function (response) {
@@ -80,6 +81,7 @@ const newGameSuccess = function (response) {
   $('#gameBoard').show()
   $('#gameMessage').show()
   $('#currentPlayerDisplay').show()
+  $('#gameHistory').hide()
 }
 
 const newGameFailure = function (error) {
@@ -87,9 +89,22 @@ const newGameFailure = function (error) {
   console.log('There is an error: ' + error.responseJSON.message)
 }
 
+const updateGameSuccess = function (response) {
+  console.log('What does updateGame send back: ' + JSON.stringify(response))
+}
+
+const updateGameFailure = function (error) {
+  console.log('An error occured: ' + error.responseJSON.message)
+}
+
 const getGamesSuccess = function (response) {
   $('#message').text('Games have beens shown.')
-  console.log('Games have been given: ' + response)
+  $('#gameHistory').show()
+  $('#gameBoard').hide()
+  $('#gameMessage').hide()
+  $('#currentPlayerDisplay').hide()
+  console.log('Games have been given: ' + JSON.stringify(response.games.length))
+  $('#gameHistory').text('Games played: ' + JSON.stringify(response.games.length))
 }
 
 const getGamesFailure = function (error) {
@@ -108,6 +123,8 @@ module.exports = {
   signOutFailure: signOutFailure,
   newGameSuccess: newGameSuccess,
   newGameFailure: newGameFailure,
+  updateGameSuccess: updateGameSuccess,
+  updateGameFailure: updateGameFailure,
   getGamesSuccess: getGamesSuccess,
   getGamesFailure: getGamesFailure
 }

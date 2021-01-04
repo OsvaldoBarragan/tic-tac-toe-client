@@ -38,22 +38,40 @@ const signOut = function () {
   })
 }
 
-const newGame = function (formData) {
+const newGame = function () {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
-    data: formData,
+    data: {},
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
   })
 }
 
-const getGames = function (formData) {
+const updateGame = function (id, index, value, isOver) {
   return $.ajax({
-    url: config.apiUrl + '/games/:id',
+    url: config.apiUrl + '/games/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: isOver
+      }
+    }
+  })
+}
+
+const getGames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
     method: 'GET',
-    data: formData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -66,5 +84,6 @@ module.exports = {
   changePassword: changePassword,
   signOut: signOut,
   newGame: newGame,
+  updateGame: updateGame,
   getGames: getGames
 }
