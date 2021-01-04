@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1 id="titleName">Log in to play the Tic Tac Toe!</h1>
+      <!-- <div id="formCarrier"></div> -->
+      <p id="message"></p>
+      <div class="unauthenticated">
+        <form id="sign-up">
+          <input
+            placeholder="Enter email"
+            type="text"
+            name="credentials[email]"
+          />
+          <input
+            placeholder="Enter a password"
+            type="password"
+            name="credentials[password]"
+          />
+          <input
+            placeholder="Re-enter your password"
+            type="password"
+            name="credentials[password_confirmation]"
+          />
+          <button type="submit">Create Account</button>
+        </form>
+        <form id="sign-in">
+          <input
+            placeholder="Enter your email"
+            type="text"
+            name="credentials[email]"
+          />
+          <input
+            placeholder="Enter your password"
+            type="password"
+            name="credentials[password]"
+          />
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+      <div class="authenticated">
+        <form id="password-change">
+          <input
+            placeholder="Enter current password"
+            type="password"
+            name="passwords[old]"
+          />
+          <input
+            placeholder="Enter new password"
+            type="password"
+            name="passwords[new]"
+          />
+          <button type="submit">Change Password</button>
+        </form>
+        <button id="sign-out">Log off</button>
+        <button id="new-game">Start a New Game</button>
+        <button id="get-games">Get Games</button>
+        <div id="gameMessage"></div>
+        <h3 id="currentPlayerDisplay">Current Player: Player 1 (X)</h3>
+        <div data-cell-index='0'></div>
+        <table id="gameBoard">
+          <tr>
+            <td class="space" id="0"></td>
+            <td class="space" id="1"></td>
+            <td class="space" id="2"></td>
+          </tr>
+          <tr>
+            <td class="space" id="3"></td>
+            <td class="space" id="4"></td>
+            <td class="space" id="5"></td>
+          </tr>
+          <tr>
+            <td class="space" id="6"></td>
+            <td class="space" id="7"></td>
+            <td class="space" id="8"></td>
+          </tr>
+        </table>
+        <h2 id="gameHistory"></h2>
+    </div>
+  </body>
+</html>
